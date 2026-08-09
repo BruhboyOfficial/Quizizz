@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://www.geometrydash.school/wp-content/uploads/games/embedded.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Geometry Dash</title>
+    
+  <!-- Prevent indexing and crawling -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <!-- Optional: Stop caching -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Main Container */
+        #game-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Start Screen Styling --- */
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        /* The blurred background layer */
+        .background-layer {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            /* Using the game banner for the background */
+            background-image: url('https://www.geometrydash.school/wp-content/uploads/2026/01/Play-Geometry-Dash-Online-For-Free.webp');
+            background-size: cover;
+            background-position: center;
+            /* Heavy blur and darkening to match reference */
+            filter: blur(25px) brightness(0.25);
+            z-index: 1;
+        }
+
+        /* The centered content on top of the blur */
+        .content-box {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Styling the game icon/banner to look like the reference */
+        .icon-container img {
+            width: 180px; /* Fixed width for icon look */
+            height: auto;
+            border-radius: 25px;
+            /* A subtle blue/purple glow around the icon */
+            box-shadow: 0 0 30px rgba(100, 100, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* Game Title */
+        .content-box h1 {
+            margin: 0 0 25px 0;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* The Play Button styling */
+        #play-btn {
+            padding: 14px 60px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            /* Purple to Blue gradient background */
+            background: linear-gradient(90deg, #6a30eb 0%, #536dfe 100%);
+            box-shadow: 0 5px 20px rgba(83, 109, 254, 0.4);
+            outline: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            
+            /* The "moving in and out" animation */
+            animation: pulse-animation 2s infinite ease-in-out;
+        }
+
+        #play-btn:hover {
+            /* Pause animation on hover and scale up slightly */
+            animation-play-state: paused;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(83, 109, 254, 0.6);
+        }
+
+        /* Keyframes for the button breathing/pulsing effect */
+        @keyframes pulse-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Iframe Styling --- */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none; /* Hidden initially */
+            position: relative;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="start-screen" style="transition: opacity 0.5s; opacity: 0; display: none;">
+            <div class="background-layer"></div>
+            
+            <div class="content-box">
+                <div class="icon-container">
+                    <img src="./Play-Geometry-Dash-Online-For-Free.webp" alt="Geometry Dash Icon">
+                </div>
+                <h1>Geometry Dash</h1>
+                <button id="play-btn" onclick="startGame()">Play Now</button>
+            </div>
+        </div>
+
+        <iframe id="game-frame" allowfullscreen="true" scrolling="no" data-ruffle-polyfilled="" src="./saved_resource.html" style="display: block;"></iframe>
+    </div>
+
+    <script>
+        function startGame() {
+            var startScreen = document.getElementById('start-screen');
+            var gameFrame = document.getElementById('game-frame');
+            
+            // 1. Set the source of the iframe to load the game URL specifically requested
+            gameFrame.src = "https://pulpaganero.github.io/geometry-dash-lite/";
+            
+            // 2. Fade out the start screen smoothly
+            startScreen.style.transition = "opacity 0.5s ease";
+            startScreen.style.opacity = 0;
+
+            // 3. After fade out, remove start screen and show iframe
+            setTimeout(function() {
+                startScreen.style.display = 'none';
+                gameFrame.style.display = 'block';
+            }, 500);
+        }
+    </script>
+
+<script type="module" src="./v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;718421b7c89b468b9714a10b2ceec403&quot;,&quot;r&quot;:1}" crossorigin="anonymous"></script>
+
+</body></html>
